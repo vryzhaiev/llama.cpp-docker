@@ -19,6 +19,13 @@ jobs:
     permissions:
       contents: read
       packages: write
+    strategy:
+      matrix:
+        include:
+          - tag: latest
+            fp16: "ON"
+          - tag: latest-fp32
+            fp16: "OFF"
 
     steps:
       - name: Checkout repository
@@ -46,9 +53,10 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=min
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.tag }}
+          cache-from: type=gha,scope=${{ matrix.tag }}
+          cache-to: type=gha,mode=min,scope=${{ matrix.tag }}
           build-args: |
             LLAMA_CPP_COMMIT=${{ steps.llama-commit.outputs.commit }}
             RUNNER_CACHE_VERSION=v1
+            GGML_SYCL_F16=${{ matrix.fp16 }}
