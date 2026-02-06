@@ -55,7 +55,7 @@ jobs:
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.tag }}
           cache-from: type=gha,scope=${{ matrix.tag }}
-          cache-to: type=gha,mode=min,scope=${{ matrix.tag }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.tag }}
           build-args: |
             LLAMA_CPP_COMMIT=${{ steps.llama-commit.outputs.commit }}
             RUNNER_CACHE_VERSION=v1
