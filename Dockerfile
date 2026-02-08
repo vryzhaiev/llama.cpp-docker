@@ -12,8 +12,8 @@ WORKDIR /build
 # Llama.cpp cache invalidation, happens only when there is a new commit
 ARG LLAMA_CPP_COMMIT=unknown
 
-# Build with FP16 support by default, can be disabled by passing GGML_SYCL_F16=OFF build arg
-ARG GGML_SYCL_F16=ON
+# FP16 support is disabled by default, can be enabled by passing GGML_SYCL_F16=ON build arg
+ARG GGML_SYCL_F16=OFF
 
 # Build with SYCL Graph support (disabled at runtime by default, enable with GGML_SYCL_DISABLE_GRAPH=0)
 RUN git clone --depth 1 https://github.com/ggml-org/llama.cpp.git . \

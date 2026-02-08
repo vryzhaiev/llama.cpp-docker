@@ -23,9 +23,9 @@ jobs:
       matrix:
         include:
           - tag: latest
-            fp16: "ON"
-          - tag: latest-fp32
             fp16: "OFF"
+          - tag: latest-fp16
+            fp16: "ON"
 
     steps:
       - name: Checkout repository
