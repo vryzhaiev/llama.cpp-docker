@@ -1,12 +1,12 @@
-name: Build and Publish
+name: Build and Publish Intel
 
 on:
   push:
     branches:
       - master
     paths:
-      - '.github/workflows/build.yml'
-      - 'Dockerfile'
+      - '.github/workflows/build-intel.yml'
+      - 'intel.Dockerfile'
   workflow_dispatch:
 
 env:
@@ -22,9 +22,9 @@ jobs:
     strategy:
       matrix:
         include:
-          - tag: latest
+          - tag: latest-intel
             fp16: "OFF"
-          - tag: latest-fp16
+          - tag: latest-intel-fp16
             fp16: "ON"
 
     steps:
@@ -52,6 +52,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          file: ./intel.Dockerfile 
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.tag }}
           cache-from: type=gha,scope=${{ matrix.tag }}

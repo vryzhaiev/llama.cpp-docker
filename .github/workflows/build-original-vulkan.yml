@@ -1,11 +1,11 @@
-name: Build and Publish official Vulkan
+name: Build and Publish original Vulkan
 
 on:
   push:
     branches:
       - master
     paths:
-      - '.github/workflows/build-official-vulkan.yml'
+      - '.github/workflows/build-original-vulkan.yml'
   workflow_dispatch:
 
 env:
@@ -44,6 +44,6 @@ jobs:
           file: ./llama_source/.devops/vulkan.Dockerfile 
           target: server
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest-official-vulkan
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest-original-vulkan
           cache-from: type=gha
           cache-to: type=gha,mode=max

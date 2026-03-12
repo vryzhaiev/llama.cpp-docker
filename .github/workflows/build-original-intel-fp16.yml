@@ -1,11 +1,11 @@
-name: Build and Publish official FP16
+name: Build and Publish original Intel FP16
 
 on:
   push:
     branches:
       - master
     paths:
-      - '.github/workflows/build-official-fp16.yml'
+      - '.github/workflows/build-original-intel-fp16.yml'
   workflow_dispatch:
 
 env:
@@ -44,8 +44,8 @@ jobs:
           file: ./llama_source/.devops/intel.Dockerfile 
           target: server
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest-official-fp16
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest-original-intel-fp16
           build-args:
             GGML_SYCL_F16=ON
           cache-from: type=gha
-          cache-to: type=gha,mode=min
+          cache-to: type=gha,mode=max

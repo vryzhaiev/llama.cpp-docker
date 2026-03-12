@@ -1,1 +1,1 @@
-# llama-cpp-sycl-docker
+# llama.cpp-docker
