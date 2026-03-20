@@ -12,6 +12,8 @@ RUN apt-get update \
     libxcb-xinput0 libxcb-xinerama0 libxcb-cursor-dev libvulkan-dev glslc \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /build
+
 # Llama.cpp cache invalidation, happens only when there is a new commit
 ARG LLAMA_CPP_COMMIT=unknown
 
