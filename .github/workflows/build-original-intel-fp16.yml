@@ -47,5 +47,4 @@ jobs:
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest-original-intel-fp16
           build-args:
             GGML_SYCL_F16=ON
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          no-cache: true
