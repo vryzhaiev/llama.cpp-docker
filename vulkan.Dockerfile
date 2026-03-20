@@ -1,5 +1,6 @@
 FROM ubuntu:26.04 AS base
 
+# Make sure the builder and runner have the exact same versions
 RUN apt-get update \
     && apt-get upgrade -y \
     && rm -rf /var/lib/apt/lists/*
