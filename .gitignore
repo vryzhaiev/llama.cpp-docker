@@ -8,3 +8,4 @@ docker-compose.yaml
 # Directories
 *venv/
 test/
+tmp/
